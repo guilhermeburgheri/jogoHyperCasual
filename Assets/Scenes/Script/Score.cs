@@ -5,20 +5,36 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    public static int ScoreValue = 0;
-    Text score;
+    public static int ScoreValue = 0; // valor de pontos totais do score
+    public float timeToIncreaseScore = 5f; //tempo em segundos para aumentar o score
+    private float countTime;
+    Text scoreText; //texto do score convertido da variável inteira ScoreValue
     
     void Start()
     {
-        score = GetComponent<Text>();
+        scoreText = GetComponent<Text>();
 
     }
 
     
     void Update()
     {
+        Timer();
+        ScoreToText();
+    }
 
-        score.text = "Score: " + ScoreValue;
+    void ScoreToText()
+    {
+        scoreText.text = "Score: " + ScoreValue;
+    }
 
+    void Timer()
+    {
+        countTime += Time.deltaTime;
+        if(countTime > timeToIncreaseScore)
+        {
+            ScoreValue += 1;
+            countTime = 0;
+        }
     }
 }
