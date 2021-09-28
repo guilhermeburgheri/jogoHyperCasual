@@ -6,34 +6,22 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour
 {
     public static int ScoreValue = 0; // valor de pontos totais do score
-    public static int distanceValue = 0; 
-    public float timeToIncreaseDistance = 10f; //tempo em segundos para aumentar a distância
-    private float countDistance;
-    public static int distanceDivision = 50; // a cada 50m aumente um de score
-    public static int distanceLowerPoint = 5;
-    public int distanceIncrease = 1;
-    public float distanceMultiplier = 2f;
-    
+    public float timeToIncreaseScore = 10f; //tempo em segundos para aumentar o score
+    private float countTime;
+    public int scoreIncrease = 10;
     Text scoreText; //texto do score convertido da variável inteira ScoreValue
-    Text distanceText; 
-
-    public bool isDistanceText;
-    private bool isDistanceIncreased;
-
+    
     void Start()
     {
-        if(isDistanceText) distanceText = GetComponent<Text>(); else scoreText = GetComponent<Text>();
+        scoreText = GetComponent<Text>();
         ScoreValue = PlayerPrefs.GetInt("finalScore");
-        distanceValue = PlayerPrefs.GetInt("finalDistance");
     }
 
     void Update()
     {
-        if(isDistanceText) DistanceToText(); else ScoreToText();
-        DistanceCounter();
+        Timer();
+        ScoreToText();
         HighScore();
-        HighDistance();
-        ScoreCounter();
     }
 
     void ScoreToText()
@@ -41,45 +29,14 @@ public class Score : MonoBehaviour
         scoreText.text = "Score: " + ScoreValue;
     }
 
-    void DistanceToText()
+    void Timer()
     {
-        distanceText.text = "Distância: " + distanceValue + "m";
-    }
-
-    void ScoreCounter()
-    {
-        if(distanceValue % distanceDivision == 0 && distanceValue != 0 && isDistanceIncreased)
+        countTime += Time.deltaTime;
+        if(countTime > timeToIncreaseScore)
         {
-           ScoreValue += 5;
-        } 
-        else if(distanceValue % distanceLowerPoint == 0 && distanceValue != 0 && isDistanceIncreased)
-        {
-           ScoreValue += 1; 
+            ScoreValue += scoreIncrease;
+            countTime = 0;
         }
-    }
-
-    void DistanceCounter() 
-    {
-        if(countDistance > 0)
-        {
-            countDistance -= Time.deltaTime;
-            isDistanceIncreased = false;
-        } 
-        else 
-        {
-            isDistanceIncreased = true;
-            distanceValue += 1;
-            countDistance = timeToIncreaseDistance;
-        }
-    }
-
-     void HighDistance()
-    {
-        if(distanceValue > PlayerPrefs.GetInt("highDistance"))
-        {
-            PlayerPrefs.SetInt("highDistance", distanceValue);
-        } 
-        PlayerPrefs.SetInt("finalDistance", distanceValue);
     }
 
     void HighScore()

@@ -6,39 +6,8 @@ using UnityEngine;
 
 public class colorToPrefab 
 {
-    private int percentageNumber;
-    public GameObject goldPrefab, purplePrefab, redPrefab, greenPrefab, bluePrefab;
+    public GameObject prefab;
     public Color color;
-    
-    [HideInInspector]
-    public GameObject prefab; 
-    
-    public void chooseCoin()
-    {
-        percentageNumber = Random.Range(1, 101);
-        Debug.Log("Percentage Number: " + percentageNumber);
-        if(percentageNumber >= 1 && percentageNumber < 61)
-        {
-                prefab = goldPrefab;
-        }   
-        if(percentageNumber >= 61 && percentageNumber < 80)
-        {
-                prefab = purplePrefab;
-        }    
-        if(percentageNumber >= 81 && percentageNumber < 90)
-        {
-                prefab = redPrefab;
-        }
-        if(percentageNumber >= 91 && percentageNumber < 98)
-        {
-                prefab = greenPrefab;
-        }
-        if(percentageNumber >= 98 && percentageNumber <= 100)
-        {
-                prefab = bluePrefab;
-        }
-        Debug.Log("Prefab: " + prefab);
-    }
 }
 
 public class CoinSpawner : MonoBehaviour
@@ -88,8 +57,8 @@ public class CoinSpawner : MonoBehaviour
 
             case 5:
             coinMap = linha_map;
-            break; 
-            */  
+            break;   
+            */
         }
 
         for(int x = 0; x < coinMap.width; x++)
@@ -110,7 +79,6 @@ public class CoinSpawner : MonoBehaviour
             if(obj.color.Equals(mapColor))
             {
                 Vector2 pos = new Vector2(x, y);
-                obj.chooseCoin();
                 Instantiate(obj.prefab, pos, Quaternion.identity, parentObj.transform);
             }
         }
