@@ -14,12 +14,12 @@ public class HighScore : MonoBehaviour
         if(finalScore)
         {
             finalScoreText = GetComponent<Text>();
-            finalScoreText.text = "" + PlayerPrefs.GetInt("finalScore");
+            finalScoreText.text = PlayerPrefs.GetInt("finalScore") + "\n" + PlayerPrefs.GetInt("finalDistance");
         } 
         else if(highScore)
         {
             highScoreText = GetComponent<Text>();
-            highScoreText.text = "" +  PlayerPrefs.GetInt("highScore");
+            highScoreText.text = PlayerPrefs.GetInt("highScore") + "\n" + PlayerPrefs.GetInt("highDistance");
         }
     }
 }

@@ -47,6 +47,7 @@ public class GameState : MonoBehaviour
         tentarNovamente = false;
         PlayerPrefs.SetInt("Coins", 0);
         PlayerPrefs.SetInt("finalScore", 0);
+        PlayerPrefs.SetInt("finalDistance", 0);
         sessionState = gameState.started;
         HandleStates();
        } 
@@ -75,7 +76,8 @@ public class GameState : MonoBehaviour
     void ResetHighScore()
     {
         PlayerPrefs.SetInt("highScore", 0);
-        highScoreText.text = "" +  PlayerPrefs.GetInt("highScore"); 
+        PlayerPrefs.SetInt("highDistance", 0);
+        highScoreText.text = "" +  PlayerPrefs.GetInt("highScore") + "/n" + PlayerPrefs.GetInt("highDistance"); 
     }
 
     void HandleStates()

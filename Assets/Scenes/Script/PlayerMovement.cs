@@ -18,7 +18,6 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
             isJumping = true;
-            Score.ScoreValue += 1;
         }
     }
 
