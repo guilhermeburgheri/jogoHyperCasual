@@ -6,7 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     public float JumpForce;
     private Rigidbody2D rb;
-    private bool isJumping;
+    public bool isJumping;
+    public bool isInObstacle;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -23,9 +24,10 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Obstacle"))
         {
             isJumping = false;
         }
+        if(other.gameObject.CompareTag("Obstacle")) isInObstacle = true; else isInObstacle = false;
     }
 }

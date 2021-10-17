@@ -13,9 +13,14 @@ public class Score : MonoBehaviour
     public static int distanceLowerPoint = 5;
     public int distanceIncrease = 1;
     public float distanceMultiplier = 2f;
+    public float timeToIncreaseAirScore = 1f;
+    private float countAirScore;
     
     Text scoreText; //texto do score convertido da variável inteira ScoreValue
     Text distanceText; 
+
+    GameObject playerObject;
+    PlayerMovement playerMovementScript;
 
     public bool isDistanceText;
     private bool isDistanceIncreased;
@@ -25,6 +30,8 @@ public class Score : MonoBehaviour
         if(isDistanceText) distanceText = GetComponent<Text>(); else scoreText = GetComponent<Text>();
         ScoreValue = PlayerPrefs.GetInt("finalScore");
         distanceValue = PlayerPrefs.GetInt("finalDistance");
+        playerObject = GameObject.FindWithTag("Player");
+        playerMovementScript = (PlayerMovement) playerObject.GetComponent(typeof(PlayerMovement));
     }
 
     void Update()
@@ -54,7 +61,19 @@ public class Score : MonoBehaviour
         } 
         else if(distanceValue % distanceLowerPoint == 0 && distanceValue != 0 && isDistanceIncreased)
         {
-           ScoreValue += 1; 
+            ScoreValue += 1;
+        }
+        else if(playerMovementScript.isJumping || playerMovementScript.isInObstacle)
+        {
+            if(countAirScore > 0)
+            {
+                countAirScore -= Time.deltaTime;
+            }
+            else 
+            {
+                ScoreValue += 1;
+                countAirScore = timeToIncreaseAirScore;
+            }
         }
     }
 
@@ -92,4 +111,5 @@ public class Score : MonoBehaviour
         //salve o valor do score para exibir na tela final.
         PlayerPrefs.SetInt("finalScore", ScoreValue);
     }
+    
 }

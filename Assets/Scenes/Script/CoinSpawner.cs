@@ -37,7 +37,6 @@ public class colorToPrefab
         {
                 prefab = bluePrefab;
         }
-        Debug.Log("Prefab: " + prefab);
     }
 }
 

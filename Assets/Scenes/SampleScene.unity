@@ -322,6 +322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JumpForce: 26
+  isJumping: 0
 --- !u!61 &342612031
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -396,7 +397,7 @@ GameObject:
   - component: {fileID: 358089832}
   m_Layer: 0
   m_Name: CanoManobra
-  m_TagString: Ground
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1313,6 +1314,7 @@ MonoBehaviour:
   timeToIncreaseDistance: 1
   distanceIncrease: 1
   distanceMultiplier: 50
+  airPointsValue: 1
   isDistanceText: 1
 --- !u!114 &1245718551
 MonoBehaviour:
@@ -1506,6 +1508,7 @@ MonoBehaviour:
   timeToIncreaseDistance: 1
   distanceIncrease: 1
   distanceMultiplier: 50
+  airPointsValue: 1
   isDistanceText: 0
 --- !u!114 &1654005352
 MonoBehaviour:
@@ -1563,7 +1566,7 @@ GameObject:
   - component: {fileID: 1841278653}
   m_Layer: 0
   m_Name: CanoManobra2
-  m_TagString: Ground
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
