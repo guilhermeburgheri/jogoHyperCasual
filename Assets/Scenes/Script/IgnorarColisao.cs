@@ -9,7 +9,7 @@ public class IgnorarColisao : MonoBehaviour
     private BoxCollider2D canoCollider2;
     private BoxCollider2D chao;
     private BoxCollider2D chao1;
-
+    
     void Start()
     {
         objCollider = GetComponent<BoxCollider2D>();

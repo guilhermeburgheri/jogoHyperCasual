@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     public bool isJumping;
     public bool isInObstacle;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
