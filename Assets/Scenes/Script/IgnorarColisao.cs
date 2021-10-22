@@ -6,7 +6,7 @@ public class IgnorarColisao : MonoBehaviour
 {
     private BoxCollider2D objCollider;
     private BoxCollider2D canoCollider;
-    private BoxCollider2D canoCollider2;
+    private EdgeCollider2D canoCollider2;
     private BoxCollider2D chao;
     private BoxCollider2D chao1;
     
@@ -14,7 +14,7 @@ public class IgnorarColisao : MonoBehaviour
     {
         objCollider = GetComponent<BoxCollider2D>();
         canoCollider = GameObject.Find("CanoManobra").GetComponent<BoxCollider2D>();
-        canoCollider2 = GameObject.Find("CanoManobra2").GetComponent<BoxCollider2D>();
+        canoCollider2 = GameObject.Find("CanoManobra2").GetComponent<EdgeCollider2D>();
         chao = GameObject.Find("Chao").GetComponent<BoxCollider2D>();
         chao1 = GameObject.Find("Chao (1)").GetComponent<BoxCollider2D>();
 
