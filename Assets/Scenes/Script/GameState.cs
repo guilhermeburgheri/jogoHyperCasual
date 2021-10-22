@@ -20,6 +20,7 @@ public class GameState : MonoBehaviour
     public Button btnJogar;
     public Button btnRetornar;
     public Button btnResetHighScore;
+    public Button btnCredito;
 
     public Text highScoreText;
 
@@ -27,7 +28,8 @@ public class GameState : MonoBehaviour
     {
         if(sessionState ==  gameState.ended || sessionState == gameState.none)
         {
-            btnJogar.onClick.AddListener(PlayGame);    
+            btnJogar.onClick.AddListener(PlayGame);
+            
         } 
         if(sessionState == gameState.ended)
         {
