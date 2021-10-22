@@ -15,19 +15,13 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    public void Jump()
     {
-        if (Input.GetButtonDown("Jump") && !isJumping)
+        if (isJumping == false)
         {
             rb.AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
             isJumping = true;
         }
-    }
-
-    public void Jump()
-    {
-        rb.AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
-        isJumping = true;
     }
 
     void OnCollisionEnter2D(Collision2D other)
