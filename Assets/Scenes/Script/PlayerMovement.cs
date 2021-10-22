@@ -24,6 +24,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void Jump()
+    {
+        rb.AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
+        isJumping = true;
+    }
+
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Obstacle"))
